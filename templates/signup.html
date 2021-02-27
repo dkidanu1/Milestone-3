@@ -1,0 +1,35 @@
+{% extends "base.html" %} 
+{% block content %} 
+
+<h3 class="center-align">Sign up</h3>
+
+    <div class="row">
+        <form class="col s12 m8 offset-m2" method="post" action="{{ url_for('signup') }}">
+            <div class="card-panel">
+                <!-- username -->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="username" name="username" type="text" class="validate">
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <!-- Password -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="password" name="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <!-- register -->
+                <div class="row">
+                    <button type="submit" class="col s12 btn-large light-blue darken-2 text-shadow">
+                    Sign Up <i class="material-icons prefix">add_box</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %} 
