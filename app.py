@@ -44,7 +44,9 @@ def signup():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")        
+        flash("Registration Successful!")     
+        return redirect(url_for("myrecipes", username=session["user"]))  
+
     return render_template("signup.html")
 
 
@@ -60,7 +62,10 @@ def signin():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
+                    flash("Welcome, {}".format
+                        (request.form.get("username")))
+                    return redirect(url_for(
+                        "myrecipes", username=session["user"])) 
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -73,6 +78,24 @@ def signin():
 
     return render_template("signin.html")
 
+@app.route("/myrecipes/<username>", methods=["GET", "POST"])
+def myrecipes(username):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"]: 
+        return render_template("myrecipes.html", username=username)
+
+    return redirect(url_for("signin"))
+
+
+@app.route("/signout")
+def signout():
+    # remove user from session cookies
+    flash("You have been signed out")
+    session.pop("user")
+    return redirect(url_for("signin"))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
