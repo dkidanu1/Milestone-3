@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<h3 class="light-blue-text text-darken-4 center-align">Add Recipe</h3>
+<h3 class="light-blue-text text-darken-4 center-align">Edit Recipe</h3>
 
 <div class="row">
-    <form class="col s12" method="post" action="{{ url_for('add_recipe') }}">
+    <form class="col s12" method="post" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
         <!--Category drop down-->
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">dehaze</i>
                 <select id="categoy_name" name="category_name" class="validate" required>
-                    <option value="" disabled selected>Choose Category</option>
+                    <option value="" disabled >Choose Category</option>
                     {% for category in categories %}
+                       {% if category.category_name == recipe.category_name %} 
+                    <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                       {% else %}
                     <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label for="category_name">Recipe Category</label>
@@ -22,7 +26,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
-                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate"
+                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" value="{{ recipe.recipe_name }}" type="text" class="validate"
                     required>
                 <label for="recipe_name">Recipe Name</label>
             </div>
@@ -33,7 +37,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">toc</i>
                 <textarea id="recipe_description" name="recipe_description" minlength="5" maxlength="500"
-                    class="materialize-textarea"></textarea>
+                    class="materialize-textarea validate" required> {{ recipe.recipe_description }} </textarea>
                 <label for="recipe_description">Recipe Description</label>
             </div>
         </div>
@@ -43,7 +47,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <textarea id="ingredients" name="ingredients" minlength="5" maxlength="500"
-                    class="materialize-textarea"></textarea>
+                    class="materialize-textarea"> {{ recipe.recipe_ingredients }} </textarea>
                 <label for="ingredients">Ingredients</label>
             </div>
         </div>
@@ -53,7 +57,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">comment</i>
                 <textarea id="recipe_steps" name="recipe_steps" minlength="5" maxlength="500"
-                    class="materialize-textarea"></textarea>
+                    class="materialize-textarea"> {{ recipe.recipe_steps }}</textarea>
                 <label for="recipe_steps">Recipe Instructions</label>
             </div>
         </div>
@@ -63,7 +67,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">add_alarm</i>
                 <textarea id="duration_cook" name="duration_cook" 
-                    class="materialize-textarea"></textarea>
+                    class="materialize-textarea"> {{ recipe.duration_cook }} </textarea>
                 <label for="duration_cook">Duration of Cook</label>
             </div>
         </div>
@@ -73,7 +77,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">camera_alt</i>
                 <label id="urlLabel" class="strong-label"> Image URL</label>
-                <input id="imageUrl" name="imageUrl" type="text" class="validate form-control"
+                <input id="imageUrl" name="imageUrl" type="text" value="{{ recipe.urlLabel }}"  class="validate form-control"
                     placeholder="https://brownie-chocolate-cake.com/etc">
             </div>
         </div>
@@ -82,7 +86,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">date_range</i>
-                <input id="createdDate" name="createdDate" type="text" class="datepicker validate" required>
+                <input id="createdDate" name="createdDate" type="text" value="{{ recipe.createdDate }}" class="datepicker validate" required>
                 <label for="createdDate">Date Created</label>
             </div>
         </div>
@@ -93,7 +97,11 @@
         
         <div class="row">
             <div class="col s12 center-align">
-                <button class="btn waves-effect waves-light" type="submit">Add Recipe
+        <!--Cancel Changes button-->
+                <a href="{{ url_for('myrecipes') }}" class="btn-large red text-shadow">
+                    
+                </a>
+                <button class="btn waves-effect waves-light" type="submit">Edit Recipe
                     <i class="material-icons right">send</i>
                 </button>
             </div>

@@ -98,9 +98,34 @@ def signout():
     return redirect(url_for("signin"))
 
 
-@app.route("/add_recipe")
+@app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
-    return render_template("add_recipe.html")
+    if request.method == "POST":
+        recipe = {
+            "category_name": request.form.get("category_name"),
+            "recipe_name": request.form.get("recipe_name"),
+            "recipe_description": request.form.get("recipe_description"),
+            "duration_cook": request.form.get("duration_cook"),
+            "ingredients": request.form.get("ingredients"),
+            "recipe_steps": request.form.get("recipe_steps"),
+            "createdDate": request.form.get("createdDate"),
+            "lastUpdated": request.form.get("lastUpdated"),
+            "created_by": session["user"]
+        }
+        mongo.db.tasks.insert_one(recipe)
+        flash("Recipe Successfully Added")
+        return redirect(url_for("get_recipe"))
+
+
+    categories = mongo.db.categories.find().sort("category_name",1)
+    return render_template("add_recipe.html", category=categories)
+
+
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    recipe = mongo.db.tasks.find_one({"_id": ObjectId(recipe_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_recipe.html", recipe=recipe, categories=categories)
 
 
 if __name__ == "__main__":

@@ -1,50 +1,58 @@
-{% extends "base.html" %} 
-{% block content %} 
+{% extends "base.html" %}
+{% block content %}
 
 
 
-    <div class="row">
-        <div class="col s12 m8 offset-m2">
-            <div class="card-panel">
-                <h3 class="center-align light-blue-text text-darken-4">
-                    {{ username }}'s Recipes 
-                </h3>
-            </div>
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
+            <h3 class="center-align light-blue-text text-darken-4">
+                {{ username }}'s Recipes
+            </h3>
         </div>
     </div>
+</div>
 
-    <ul class="collapsible">
-        {% for recipe in recipes %}
-        <li>
-            <div class="collapsible-header white-text light-blue darken-4 text-shadow">
-                <i class="fas fa-caret-down"></i>
+<ul class="collapsible">
+    {% for recipe in recipes %}
+    <li>
+        <div class="collapsible-header white-text light-blue darken-4 text-shadow">
+            <div class="col s3">
+                <i class="material-icons">arrow_drop_down</i>
+                <a href="" class="btn-small green accent-4 waves-effect "> Complete</a>
+                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small light-blue lighten-1 waves-effect "> Edit</a>
+            </div>
+            <div class="col s9">
                 <strong>{{ recipe.recipe_name }}</strong> : {{ recipe.category_name }}
                 {% if recipe.suitable_veg == "on" %}
-                    <i class="fas fa-exclamation-circle light-blue-text text-lighten-2 tooltipped"
-                        data-position="right" data-tooltip="URGENT!"></i>
+                <i class="material-iconslight-blue-text text-lighten-2 tooltipped" data-position="right"
+                    data-tooltip="URGENT!">arrow</i>
                 {% endif %}
             </div>
-            <div class="collapsible-body">
-                <strong>{{ recipe.category_name }}</strong>
-                <p>{{ recipe.recipe_description }}</p>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-
-       <!-- Modal Trigger -->
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-  <!-- Modal Structure -->
-    <div id="modal1" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
         </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+
+        <div class="collapsible-body">
+            <strong>{{ recipe.category_name }}</strong>
+            <p>{{ recipe.recipe_description }}</p>
+            <p><em> by: {{ recipe.created_by }} </em></p>
         </div>
+    </li>
+    {% endfor %}
+</ul>
+
+<!-- Modal Trigger 
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+
+<!-- Modal Structure 
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
     </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>-->
 
 
-{% endblock %} 
+{% endblock %}
