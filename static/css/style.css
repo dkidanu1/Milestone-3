@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?fam ly=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap");
+
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -14,4 +17,40 @@
     margin: 5px;
     line-height:42px;
 }
+/************ NavBar ************/
 
+/************ Hero Image ************/
+.hero-image  {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: fixed;
+  overflow-x:hidden;
+  margin-left: 0;
+  padding-left:0;
+  right: 0;
+}
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.brand-logo .sub-text {
+  font-family: "Nunito Sans", sans-serif;
+  color: white;
+}
+
+/************ REcipe Cards ************/
+.card {
+  margin-top: 700px;
+  height: 200%;
+  width:200px;
+  overflow: hidden;
+}
+    

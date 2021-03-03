@@ -1,16 +1,65 @@
-{% extends "base.html" %} 
-{% block content %} 
+{% extends "base.html" %}
+{% block content %}
 
+<!-- callout image-->
+<secion>
+    <div class="row">
+        <div class="hero-image">
+            <img class="hero-image" src="{{ url_for('static', filename='img/homepage.jpg') }}">
+            <div class="hero-text">
+                <h1>My Cook Book</h1>
+                <p class="sub-text">A source of Inspiration and Food recipes</p>
+                <a href="{{ url_for('templates', filename='signin.html') }}" class="waves-effect waves-light blue-grey lighten-4 btn"><i class="material-icons left">edit</i>Sign In</a>
+            </div>
+        </div>
+    </div>
+</secion>
+<!-- Recipe Cards-->
+<section>
+    <div class="row">
+        <div class="">
+                <h1>Popular Recipes</h1>
+                <p>Find some of the most popular recipe</p>
+            </div>
 
-     {% for recipe in recipes %}
-        {{ recipe.category_name }}<br>
-        {{ recipe.recipe_name }}<br>
-        {{ recipe.recipe_description }}<br>
-        {{ recipe.suitable_veg }}<br>
-        {{ recipe.duration_cook }}<br>
-    {% endfor %}
+        <div class="col s6 m3">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="{{ url_for('static', filename='/img/cupcake.jpg')}}">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Cup Cakes<i
+                            class="material-icons right">more_vert</i></span>
+                    <p><a href="#">This is a link</a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Card Title<i
+                            class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                </div>
+            </div>
+        </div>
 
+        <div class="col s6 m3">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="{{ url_for('static', filename='/img/homepage.jpg')}}">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Card Title<i
+                            class="material-icons right">more_vert</i></span>
+                    <p><a href="#">This is a link</a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Card Title<i
+                            class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                </div>
+            </div>
+        </div> 
 
-   
+    </div>
+    </div>
+</section>
 
-{% endblock %} 
+{% endblock %}

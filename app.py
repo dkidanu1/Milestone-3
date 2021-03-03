@@ -1,4 +1,6 @@
 import os
+import datetime
+import time
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -23,6 +25,14 @@ mongo = PyMongo(app)
 def get_recipes():
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    recipes = list(mongo.db.tasks.find({"$text": {"$search": query}}))
+    
+    return render_template("myrecipes.html", recipes=recipes)
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -80,12 +90,15 @@ def signin():
 
 @app.route("/myrecipes/<username>", methods=["GET", "POST"])
 def myrecipes(username):
-    # grab the session user's username from db
+    # Pulling the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
+    recipes = list(mongo.db.tasks.find({'created_by': username}))
+
+
     if session["user"]: 
-        return render_template("myrecipes.html", username=username)
+        return render_template("myrecipes.html", username=username, recipes=recipes)
 
     return redirect(url_for("signin"))
 
@@ -110,11 +123,12 @@ def add_recipe():
             "recipe_steps": request.form.get("recipe_steps"),
             "createdDate": request.form.get("createdDate"),
             "lastUpdated": request.form.get("lastUpdated"),
+            "imageUrl": request.form.get("imageUrl"),
             "created_by": session["user"]
         }
         mongo.db.tasks.insert_one(recipe)
         flash("Recipe Successfully Added")
-        return redirect(url_for("get_recipe"))
+        return redirect(url_for("get_recipes"))
 
 
     categories = mongo.db.categories.find().sort("category_name",1)
@@ -132,7 +146,8 @@ def edit_recipe(recipe_id):
                 "ingredients": request.form.get("ingredients"),
                 "recipe_steps": request.form.get("recipe_steps"),
                 "createdDate": request.form.get("createdDate"),
-                "lastUpdated": request.form.get("lastUpdated"),
+                "lastUpdated": datetime.datetime.now().strftime('%d %b,%Y'),
+                "imageUrl": request.form.get("imageUrl"),
                 "created_by": session["user"]
             }
             mongo.db.tasks.update({"_id":ObjectId(recipe_id)}, submit)
@@ -144,7 +159,7 @@ def edit_recipe(recipe_id):
     return render_template("edit_recipe.html", recipe=recipe, categories=categories)
 
 
-@app.route("/delete_recipe/<recipe_id>"
+@app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.tasks.remove({"_id": ObjectId(recipe_id)})
     flash("Task successfully Delted")
