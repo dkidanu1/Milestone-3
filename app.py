@@ -35,6 +35,12 @@ def search():
     return render_template("myrecipes.html", recipes=recipes)
 
 
+@app.route("/popular_recipes")
+def popular_recipes():
+    recipes = list(mongo.db.recipes.find())
+    return render_template("popular_recipes.html", recipes=recipes)
+
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":

@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<h3 class="light-blue-text text-darken-4 center-align">Edit Recipe</h3>
+<h3 class="peach center-align">Edit Recipe</h3>
 
 <div class="row">
     <form class="col s12" method="post" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
         <!--Category drop down-->
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 peach">
                 <i class="material-icons prefix">dehaze</i>
                 <select id="categoy_name" name="category_name" class="validate" required>
                     <option value="" disabled >Choose Category</option>
@@ -24,7 +24,7 @@
 
         <!--Recipe Name Field -->
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 peach">
                 <i class="material-icons prefix">assignment</i>
                 <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" value="{{ recipe.recipe_name }}" type="text" class="validate"
                     required>
@@ -34,7 +34,7 @@
 
         <!--Recipe Description Field -->
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 peach">
                 <i class="material-icons prefix">toc</i>
                 <textarea id="recipe_description" name="recipe_description" minlength="5" maxlength="500"
                     class="materialize-textarea validate" required> {{ recipe.recipe_description }} </textarea>
@@ -44,7 +44,7 @@
 
         <!--Recipe Ingredients list -->
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 peach">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <textarea id="ingredients" name="ingredients" minlength="5" maxlength="500"
                     class="materialize-textarea"> {{ recipe.recipe_ingredients }} </textarea>
@@ -54,7 +54,7 @@
 
         <!--Recipe steps -->
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 peach">
                 <i class="material-icons prefix">comment</i>
                 <textarea id="recipe_steps" name="recipe_steps" minlength="5" maxlength="500"
                     class="materialize-textarea"> {{ recipe.recipe_steps }}</textarea>
@@ -64,7 +64,7 @@
 
         <!--Duration -->
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 peach">
                 <i class="material-icons prefix">add_alarm</i>
                 <textarea id="duration_cook" name="duration_cook" 
                     class="materialize-textarea"> {{ recipe.duration_cook }} </textarea>
@@ -74,7 +74,7 @@
 
         <!--Image Url -->
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 peach">
                 <i class="material-icons prefix">camera_alt</i>
                 <label id="urlLabel" class="strong-label"> Image URL</label>
                 <input id="imageUrl" name="imageUrl" type="text" value="{{ recipe.urlLabel }}"  class="validate form-control"
@@ -84,7 +84,7 @@
 
         <!--created date -->
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 peach">
                 <i class="material-icons prefix">date_range</i>
                 <input id="createdDate" name="createdDate" type="text" value="{{ recipe.createdDate }}" class="datepicker validate" required>
                 <label for="createdDate">Date Created</label>
@@ -98,10 +98,9 @@
         <div class="row">
             <div class="col s12 center-align">
         <!--Cancel Changes button-->
-                <a href="{{ url_for('myrecipes',username=session['user']) }}" class="btn-large red text-shadow">
-                    
-                </a>
-                <button class="btn waves-effect waves-light" type="submit">Edit Recipe
+                <a href="{{ url_for('myrecipes',username=session['user']) }}" class="btn deep-orange lighten-4 text-shadow">  
+                Reset </a>
+                <button class="btn blue-grey lighten-4 waves-effect waves-light" type="submit">Edit Recipe
                     <i class="material-icons right">send</i>
                 </button>
             </div>

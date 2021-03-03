@@ -13,11 +13,23 @@
     margin: 5px;
 }
 
-.collapsible-header .col strong {
-    margin: 5px;
-    line-height:42px;
-}
+
 /************ NavBar ************/
+.brand-logo {
+  font-family: "Nunito Sans", sans-serif;
+  margin-left: 50px;  
+}
+
+.navbar{
+  border: 0;
+  box-shadow: 0;
+  background-color: #DFC7C1;
+}
+
+.peach{
+  color: #DFC7C1;
+  font-family: "Nunito Sans", sans-serif;
+}
 
 /************ Hero Image ************/
 .hero-image  {
@@ -48,9 +60,52 @@
 
 /************ REcipe Cards ************/
 .card {
-  margin-top: 700px;
+  
   height: 200%;
   width:200px;
   overflow: hidden;
 }
+
+/************ Signin&Signup ************/
+
+.sign{
+  color: #DFC7C1;
+  font-family: "Nunito Sans", sans-serif;
+  text-align: center;
+}
+
+.submitbtn{
+  justify-content: center;
+}
+
+/************ My Recipes ************/
+.overlay{
+  width: 100%;
+    margin-left: auto;
+    left: 0;
+    right: 0;
+    background-color: rgba(223,199,194,0.7);
+    font-size: 50px;
+    color: white;
+    font-family: "Nunito Sans", sans-serif;
+
+}
+.preview{
+  text-shadow: none;
+
+}
+
+.collapsible-header .col strong {
+    margin: 5px;
+    line-height:42px;
     
+}
+
+/************ Popular Recipes ************/
+.popular {
+    text-align: center;
+}
+
+.sub-text {
+    text-align: center;
+}
