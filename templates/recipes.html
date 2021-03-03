@@ -7,10 +7,15 @@
         <div class="hero-image">
             <img class="hero-image" src="{{ url_for('static', filename='img/homepage.jpg') }}">
             <div class="hero-text">
-                <h1 class="peach">My Cook Book</h1>
-                <p class="sub-text peach">NUTRITIONIST-APPROVED, HEALTHY RECIPES! FILTER BY CUISINE, DIATARY REQUIREMENT AND MORE!</p>
+                <h1 class="">My Cook Book</h1>
+                <p class="sub-text">NUTRITIONIST-APPROVED, HEALTHY RECIPES! FILTER BY CUISINE, DIATARY REQUIREMENT AND MORE!</p>
+                {% if session.user %}
+                <a href="{{ url_for('popular_recipes') }}" class="waves-effect waves-light grey lighten-5 black-text btn"><i class="material-icons left"></i>Popular Recipes</a>
+                <a href="{{ url_for('add_recipe') }}" class="waves-effect waves-light grey lighten-5 black-text btn"><i class="material-icons left"></i>Add Recipe</a>
+                {% else %}
                 <a href="{{ url_for('signin') }}" class="waves-effect waves-light grey lighten-5 peach btn"><i class="material-icons left"></i>Sign In</a>
                 <a href="{{ url_for('signup') }}" class="waves-effect waves-light grey lighten-5 peach btn"><i class="material-icons left"></i>Sign up</a>
+                {% endif %}
             </div>
         </div>
     </div>
