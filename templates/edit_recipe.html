@@ -8,7 +8,7 @@
         <div class="row">
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">dehaze</i>
-                <select id="categoy_name" name="category_name" class="validate" required>
+                <select id="category_name" name="category_name" class="validate" required>
                     <option value="" disabled >Choose Category</option>
                     {% for category in categories %}
                        {% if category.category_name == recipe.category_name %} 
@@ -46,8 +46,8 @@
         <div class="row">
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">local_grocery_store</i>
-                <textarea id="ingredients" name="ingredients" minlength="5" maxlength="500"
-                    class="materialize-textarea"> {{ recipe.recipe_ingredients }} </textarea>
+                <textarea id="ingredients" name="ingredients" minlength="5" 
+                    class="materialize-textarea"> {{ recipe.ingredients }} </textarea>
                 <label for="ingredients">Ingredients</label>
             </div>
         </div>
@@ -77,7 +77,7 @@
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">camera_alt</i>
                 <label id="urlLabel" class="strong-label"> Image URL</label>
-                <input id="imageUrl" name="imageUrl" type="text" value="{{ recipe.urlLabel }}"  class="validate form-control"
+                <input id="imageUrl" name="imageUrl" type="text" value="{{ recipe.imageUrl }}"  class="validate form-control"
                     placeholder="https://brownie-chocolate-cake.com/etc">
             </div>
         </div>

@@ -8,10 +8,14 @@
         <div class="row">
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">dehaze</i>
-                <select id="categoy_name" name="category_name" class="validate" required>
+                <select id="category_name" name="category_name" class="validate" required>
                     <option value="" disabled selected>Choose Category</option>
                     {% for category in category %}
+                       {% if category.category_name == recipe.category_name %} 
+                    <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                       {% else %}
                     <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label for="category_name">Recipe Category</label>
@@ -23,7 +27,7 @@
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">assignment</i>
                 <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate"
-                    required>
+                    value="{{ recipe.recipe_name }}" required>
                 <label for="recipe_name">Recipe Name</label>
             </div>
         </div>
@@ -33,7 +37,7 @@
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">toc</i>
                 <textarea id="recipe_description" name="recipe_description" minlength="5" maxlength="500"
-                    class="materialize-textarea"></textarea>
+                    class="materialize-textarea"> {{ recipe.recipe_description }} </textarea>
                 <label for="recipe_description">Recipe Description</label>
             </div>
         </div>
@@ -43,7 +47,7 @@
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <textarea id="ingredients" name="ingredients" minlength="5"
-                    class="materialize-textarea"></textarea>
+                    class="materialize-textarea"> {{ recipe.ingredients }} </textarea>
                 <label for="ingredients">Ingredients</label>
             </div>
         </div>
@@ -52,8 +56,8 @@
         <div class="row">
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">comment</i>
-                <textarea id="recipe_steps" name="recipe_steps" minlength="5" 
-                    class="materialize-textarea"></textarea>
+                <textarea id="recipe_steps" name="recipe_steps" minlength="5"
+                    class="materialize-textarea"> {{ recipe.recipe_steps }} </textarea>
                 <label for="recipe_steps">Recipe Instructions</label>
             </div>
         </div>
@@ -62,8 +66,8 @@
         <div class="row">
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">add_alarm</i>
-                <textarea id="duration_cook" name="duration_cook" 
-                    class="materialize-textarea"></textarea>
+                <textarea id="duration_cook" name="duration_cook"
+                    class="materialize-textarea"> {{ recipe.duration_cook }} </textarea>
                 <label for="duration_cook">Duration of Cook</label>
             </div>
         </div>
@@ -73,8 +77,8 @@
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">camera_alt</i>
                 <label id="urlLabel" class="strong-label"> Image URL</label>
-                <input id="imageUrl" name="imageUrl" type="text" class="validate form-control"
-                    placeholder="https://brownie-chocolate-cake.com/etc">
+                <input id="imageUrl" name="imageUrl" type="text" value="{{ recipe.imageUrl }}"
+                    class="validate form-control" placeholder="https://brownie-chocolate-cake.com/etc">
             </div>
         </div>
 
@@ -87,10 +91,8 @@
             </div>
         </div>
 
-
-
         <!--Submission button-->
-        
+
         <div class="row">
             <div class="col s12 center-align">
                 <button class="btn blue-grey lighten-4 waves-effect waves-light" type="submit">Add Recipe

@@ -30,15 +30,17 @@ def get_recipes():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    recipes = list(mongo.db.tasks.find({"$text": {"$search": query}}))
+    recipes2 = list(mongo.db.tasks.find({"$text": {"$search": query}}))
     
-    return render_template("myrecipes.html", recipes=recipes)
+    return render_template("myrecipes.html", recipes=recipes2)
 
 
 @app.route("/popular_recipes")
 def popular_recipes():
-    recipes = list(mongo.db.recipes.find())
+    recipes = list(mongo.db.tasks.find())
+    print(recipes)
     return render_template("popular_recipes.html", recipes=recipes)
+    
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -135,9 +137,16 @@ def add_recipe():
         mongo.db.tasks.insert_one(recipe)
         flash("Recipe Successfully Added")
         return redirect(url_for("get_recipes"))
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    recipeId = request.args.get("recipe")
+    print(recipeId, "Random letters")
+    if recipeId != "":
+        recipe = mongo.db.tasks.find_one({"_id": ObjectId(recipeId)})
+        print(recipe, "Random letters")
+        return render_template("add_recipe.html", 
+            recipe=recipe, category=categories)
 
-
-    categories = mongo.db.categories.find().sort("category_name",1)
+    
     return render_template("add_recipe.html", category=categories)
 
 
@@ -158,8 +167,6 @@ def edit_recipe(recipe_id):
             }
             mongo.db.tasks.update({"_id":ObjectId(recipe_id)}, submit)
             flash("Recipe Successfully Updated")
-            
-
     recipe = mongo.db.tasks.find_one({"_id": ObjectId(recipe_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_recipe.html", recipe=recipe, categories=categories)
@@ -168,7 +175,7 @@ def edit_recipe(recipe_id):
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.tasks.remove({"_id": ObjectId(recipe_id)})
-    flash("Task successfully Delted")
+    flash("Task successfully Deleted")
     return redirect(url_for("get_recipes"))
 
 

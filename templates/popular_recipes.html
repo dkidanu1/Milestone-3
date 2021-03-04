@@ -2,49 +2,45 @@
 {% block content %}
 <!-- Recipe Cards-->
 <section>
+
     <div class="row">
         <div class="">
-                <h1 class=" popular peach">Popular Recipes</h1>
-                <p class="peach sub-text">Find some of the most popular recipe</p>
-            </div>
-
+            <h1 class=" popular peach">Popular Recipes</h1>
+            <p class="peach sub-text">WE’VE HANDPICKED A FEW OF THE MOST POPULAR RECIPES FROM THE COMMUNITY TO GET YOUR
+                TASTEBUDS GOING! YOU CAN <strong>CLICK</strong> TO SAVE THE RECIPE AND ADD IT TO YOUR "MY RECIPES" PAGE.
+            </p>
+            <ul>
+                <li class="peach sub-text">
+                    - SIMPLE - QUICK - EASY - TASTY
+                </li>
+            </ul>
+        </div>
+        {% for recipe in recipes %}
+        {% if recipe.popular %}
         <div class="col s6 m3">
             <div class="card">
-                <div class="card-image waves-effect waves-block waves-light" style="max-width: 200px; width: 200px; height: 134px; max-height: 134px;">
-                    <img class="activator" src="{{ url_for('static', filename='/img/cupcake.jpg')}}">
+                <div class="card-image waves-effect waves-block waves-light"
+                    style="max-width: 200px; width: 200px; height: 134px; max-height: 134px;">
+                    <a href="{{ recipe.imageUrl }}"> <img class="activator" alt="recipes"
+                            src="{{ recipe.imageUrl }}"></a>
                 </div>
                 <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Cup Cakes<i
+                    <span
+                        class="card-title activator grey-text text-darken-4"><strong>{{ recipe.recipe_name }}</strong><i
                             class="material-icons right">more_vert</i></span>
-                    <p><a href="#">This is a link</a></p>
+                    <p><a href="{{ url_for('add_recipe',recipe= recipe._id) }}">Save Recipe</a></p>
                 </div>
                 <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Card Title<i
+                    <span class="card-title grey-text text-darken-4">{{ recipe.recipe_name }}<i
                             class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    <p>{{ recipe.recipe_description }}</p>
                 </div>
             </div>
+            {% endif %}
+        </div>
+        {% endfor %}
         </div>
 
-        <div class="col s6 m3">
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="{{ url_for('static', filename='/img/homepage.jpg')}}">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Card Title<i
-                            class="material-icons right">more_vert</i></span>
-                    <p><a href="#">This is a link</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Card Title<i
-                            class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                </div>
-            </div>
-        </div> 
-</div>
-  
 </section>
 
 {% endblock %}
