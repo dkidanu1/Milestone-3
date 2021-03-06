@@ -44,7 +44,7 @@
         </div>
         <!-- Mobile Side navbar-->
         <ul class="sidenav" id="mobile-demo">
-            <h4 class="center-align.light-blue-text text-darken-4">My CookBook</h4>
+            <h4 class="center-align.light-blue-text text-darken-4" style="margin-left: 20px;">My CookBook</h4>
             <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
             {% if session.user %}
             <li><a href="{{ url_for('popular_recipes') }}">Popular Recipes</a></li>

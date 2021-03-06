@@ -29,10 +29,21 @@ def get_recipes():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    search_list = []
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
     query = request.form.get("query")
     recipes2 = list(mongo.db.tasks.find({"$text": {"$search": query}}))
+    for item in recipes2:
+        try: 
+            item['popular']
+        except:
+            if session["user"]: 
+                search_list.append(item)
+    print(f"LIST: {search_list}")
     
-    return render_template("myrecipes.html", recipes=recipes2)
+    return render_template("myrecipes.html", 
+        recipes =search_list)
 
 
 @app.route("/popular_recipes")
