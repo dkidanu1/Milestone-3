@@ -27,14 +27,14 @@
                     </div>
                     <div class="card-content">
                         <span
-                            class="card-title activator grey-text text-darken-4"><strong>{{ recipe.recipe_name }}</strong><i
+                            class="card-title activator text-darken-4 peach"><strong>{{ recipe.recipe_name }}</strong><i
                                 class="material-icons right">more_vert</i></span>
-                        <p><a href="{{ url_for('add_recipe',recipe= recipe._id) }}">Save Recipe</a></p>
+                        <p><a href="{{ url_for('add_recipe',recipe= recipe._id) }}" class="grey-text">Save Recipe</a></p>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">{{ recipe.recipe_name }}<i
+                        <span class="card-title text-darken-4 peach"><strong>{{ recipe.recipe_name }}</strong><i
                                 class="material-icons right">close</i></span>
-                        <p>{{ recipe.recipe_description }}</p>
+                        <p class="peach">{{ recipe.recipe_description }}</p>
                     </div>
                 </div>
             </div>
