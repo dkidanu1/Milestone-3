@@ -40,16 +40,13 @@ def search():
         except:
             if session["user"]: 
                 search_list.append(item)
-    print(f"LIST: {search_list}")
-    
-    return render_template("myrecipes.html", 
-        recipes =search_list)
+                
+    return render_template("myrecipes.html", recipes =search_list)
 
 
 @app.route("/popular_recipes")
 def popular_recipes():
     recipes = list(mongo.db.tasks.find())
-    print(recipes)
     return render_template("popular_recipes.html", recipes=recipes)
     
 
@@ -147,7 +144,7 @@ def add_recipe():
         }
         mongo.db.tasks.insert_one(recipe)
         flash("Recipe Successfully Added")
-        return redirect(url_for("get_recipes"))
+        return redirect(url_for('myrecipes', username=session["user"]))
     categories = mongo.db.categories.find().sort("category_name", 1)
     recipeId = request.args.get("recipe")
     print(recipeId, "Random letters")
@@ -187,7 +184,7 @@ def edit_recipe(recipe_id):
 def delete_recipe(recipe_id):
     mongo.db.tasks.remove({"_id": ObjectId(recipe_id)})
     flash("Task successfully Deleted")
-    return redirect(url_for("get_recipes"))
+    return redirect(url_for('myrecipes', username=session["user"]))
 
 
 if __name__ == "__main__":

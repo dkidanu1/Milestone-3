@@ -21,13 +21,14 @@
                 <label for="query"> Search Recipes</label>
             </div>
 
+            <div class="col s6 m4">
+                <button type="submit" class="blue-grey lighten-4 btn search_recipes">Search
+                </button>
+            </div>
             <div class="col s6 m4 reset_recipes">
                 <a href="{{ url_for('myrecipes',username=session['user']) }}" class=" deep-orange lighten-4 btn "> Reset</a>
             </div>
-            <div class="col s6 m4">
-                <button type="submit" class="blue-grey lighten-4 btn search_recipes ">Search
-                </button>
-            </div>
+            
         </div>
     </form>
 </div>

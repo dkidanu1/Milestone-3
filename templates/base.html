@@ -49,8 +49,8 @@
             {% if session.user %}
             <li><a href="{{ url_for('popular_recipes') }}">Popular Recipes</a></li>
             <li><a href="{{ url_for('myrecipes',username=session['user']) }}">My Recipes</a></li>
-            <li><a href="{{ url_for('signout') }}">Sign Out</a></li>
             <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+            <li><a href="{{ url_for('signout') }}">Sign Out</a></li>
             {% else %}
             <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
             <li><a href="{{ url_for('signin') }}">Sign In</a></li>
@@ -63,7 +63,7 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for message in messages %}
-        <div class="row">
+        <div class="row flashes">
             <h4 class="deep-orange lighten-4 white-text center-align">{{ message }}</h4>
         </div>
         {% endfor %}
@@ -83,5 +83,16 @@
     {% block scripts %}
     {% endblock %}
 </body>
+
+<section class="footer">
+    <div class="container-fluid text-center">
+        <div class="col-12 center-align no pad">
+            <div class="card-body footer-style">
+                <h7 class="card-title txt-white peach">&copy;The Cook Book</h7>
+                <p class="card-text txt-white peach">Delila Kidanu</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 </html>
