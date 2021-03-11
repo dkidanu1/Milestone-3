@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-
 <div class="row ">
     <div class="col s12">
         <div class="card-panel overlay">
@@ -13,7 +11,7 @@
     </div>
 </div>
 
-<div class="row card-panel grey lighten-5" style="margin-top: 160px;">
+<div class="row card-panel grey lighten-5" style="margin-top: 200px;">
     <form action="{{ url_for('search') }}" method="post" class="col s12">
         <div class="row valign-wrapper center-align">
             <div class="input-field col s12 m8">
@@ -21,12 +19,12 @@
                 <label for="query"> Search Recipes</label>
             </div>
 
-            <div class="col s6 m4">
+            <div class="col s3">
                 <button type="submit" class="blue-grey lighten-4 btn search_recipes">Search
                 </button>
             </div>
-            <div class="col s6 m4 reset_recipes">
-                <a href="{{ url_for('myrecipes',username=session['user']) }}" class=" deep-orange lighten-4 btn "> Reset</a>
+            <div class="col s3">
+                <a href="{{ url_for('myrecipes',username=session['user']) }}" class=" deep-orange lighten-4 btn reset_recipes "> Reset</a>
             </div>
             
         </div>
@@ -36,7 +34,7 @@
 {% if recipes|length > 0 %}
 <ul class="collapsible popout">
     {% for recipe in recipes %}
-    <li>
+    <li id="recipe_li">
         <div class="collapsible-header white-text grey lighten-5 text-shadow">
             <p><a href="{{ recipe.imageUrl }}"> <img alt="recipes" src="{{ recipe.imageUrl }}" width="150" height="150"></a>
             </p>

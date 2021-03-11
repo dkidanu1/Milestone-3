@@ -7,20 +7,48 @@
         <div class="hero-image">
             <img class="hero-image" src="{{ url_for('static', filename='img/homepage.jpg') }}">
             <div class="hero-text">
-                <h1 class="">My Cook Book</h1>
-                <p class="sub-text"> The Cook Book is your one stop shop for cooking and recipe inspiration. Sign up now to get access to our populare recipes and to easily store your family recipes for safe keeping.</p>
-                <p class="sub-text">NUTRITIONIST-APPROVED, HEALTHY RECIPES! FILTER BY CUISINE, DIATARY REQUIREMENT AND MORE!</p>
+                <h1 class="cb">My Cook Book</h1>
+                <p class="sub-text"> The Cook Book is your one stop shop for cooking and recipe inspiration. Sign up now
+                    to get access to our populare recipes and to easily store your family recipes for safe keeping.</p>
+                <p class="sub-text">NUTRITIONIST-APPROVED, HEALTHY RECIPES! FILTER BY CUISINE, DIATARY REQUIREMENT AND
+                    MORE!</p>
                 {% if session.user %}
-                <a href="{{ url_for('popular_recipes') }}" class="waves-effect waves-light grey lighten-5 black-text btn"><i class="material-icons left"></i>Popular Recipes</a>
-                <a href="{{ url_for('add_recipe') }}" class="waves-effect waves-light grey lighten-5 black-text btn"><i class="material-icons left"></i>Add Recipe</a>
+                <div class="homebtn">
+                    <a href="{{ url_for('popular_recipes') }}"
+                        class="waves-effect waves-light grey lighten-5 black-text btn "><i
+                            class="material-icons left"></i>Popular Recipes</a>
+                </div>
+                <a href="{{ url_for('add_recipe') }}" class="waves-effect waves-light grey lighten-5 black-text btn"><i
+                        class="material-icons left"></i>Add Recipe</a>
                 {% else %}
-                <a href="{{ url_for('signin') }}" class="waves-effect waves-light grey lighten-5 peach btn"><i class="material-icons left"></i>Sign In</a>
-                <a href="{{ url_for('signup') }}" class="waves-effect waves-light grey lighten-5 peach btn"><i class="material-icons left"></i>Sign up</a>
+                <div class="homebtn">
+                    <a href="{{ url_for('signin') }}" class="waves-effect waves-light grey lighten-5 peach btn"><i
+                            class="material-icons left"></i>Sign In</a>
+                </div>
+                <a href="{{ url_for('signup') }}" class="waves-effect waves-light grey lighten-5 peach btn"><i
+                        class="material-icons left"></i>Sign up</a>
                 {% endif %}
             </div>
         </div>
     </div>
 </secion>
+<!-- If Time add this -->
+<section>
+       <div class="col s12 m8 offset-m2 l6 offset-l3">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="img/shiro.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                This is a square image. Add the "circle" class to it to make it appear circular.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
 
 
 {% endblock %}
