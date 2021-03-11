@@ -36,7 +36,7 @@
     {% for recipe in recipes %}
     <li id="recipe_li">
         <div class="collapsible-header white-text grey lighten-5 text-shadow">
-            <p><a href="{{ recipe.imageUrl }}"> <img alt="recipes" src="{{ recipe.imageUrl }}" width="150" height="150"></a>
+            <p><a href="{{ recipe.image_Url }}"> <img alt="recipes" src="{{ recipe.image_Url }}" width="150" height="150"></a>
             </p>
         
             <div class="col s3 preview">
@@ -59,19 +59,19 @@
             <p>{{ recipe.duration_cook }}</p>
 
             <strong> Ingredients </strong>
-            <p>{{ recipe.ingredients }}</p>
+            <p>{{ recipe.recipe_ingredients }}</p>
 
             <strong> Instructions </strong>
             <p>{{ recipe.recipe_steps }}</p>
 
             <strong>Date created</strong>
-            <p>{{ recipe.createdDate }}</p>
+            <p>{{ recipe.created_Date }}</p>
 
             <strong>Last Updated</strong>
-            <p>{{ recipe.lastUpdated }}</p>
+            <p>{{ recipe.last_Updated }}</p>
 
             <strong>Recipe Image</strong>
-            <p><a href="{{ recipe.imageUrl }}"> <img alt="recipes" src="{{ recipe.imageUrl }}" width="150" height="150"></a>
+            <p><a href="{{ recipe.image_Url }}"> <img alt="recipes" src="{{ recipe.image_Url }}" width="150" height="150"></a>
             </p>
 
             <p><em> by: {{ recipe.created_by }} </em></p>

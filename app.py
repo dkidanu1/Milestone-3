@@ -135,10 +135,10 @@ def add_recipe():
             "recipe_name": request.form.get("recipe_name"),
             "recipe_description": request.form.get("recipe_description"),
             "duration_cook": request.form.get("duration_cook"),
-            "ingredients": request.form.get("ingredients"),
+            "recipe_ingredients": request.form.get("recipe_ingredients"),
             "recipe_steps": request.form.get("recipe_steps"),
-            "createdDate": request.form.get("createdDate"),
-            "lastUpdated": request.form.get("lastUpdated"),
+            "created_Date": request.form.get("created_Date"),
+            "last_Updated": request.form.get("last_Updated"),
             "imageUrl": request.form.get("imageUrl"),
             "created_by": session["user"]
         }
@@ -166,11 +166,11 @@ def edit_recipe(recipe_id):
                 "recipe_name": request.form.get("recipe_name"),
                 "recipe_description": request.form.get("recipe_description"),
                 "duration_cook": request.form.get("duration_cook"),
-                "ingredients": request.form.get("ingredients"),
+                "recipe_ingredients": request.form.get("recipe_ingredients"),
                 "recipe_steps": request.form.get("recipe_steps"),
-                "createdDate": request.form.get("createdDate"),
-                "lastUpdated": datetime.datetime.now().strftime('%d %b,%Y'),
-                "imageUrl": request.form.get("imageUrl"),
+                "created_Date": request.form.get("created_Date"),
+                "last_Updated": datetime.datetime.now().strftime('%d %b,%Y'),
+                "image_Url": request.form.get("image_Url"),
                 "created_by": session["user"]
             }
             mongo.db.tasks.update({"_id":ObjectId(recipe_id)}, submit)

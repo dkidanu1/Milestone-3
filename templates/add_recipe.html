@@ -46,9 +46,9 @@
         <div class="row">
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">local_grocery_store</i>
-                <textarea id="ingredients" name="ingredients" minlength="5"
-                    class="materialize-textarea"> {{ recipe.ingredients }} </textarea>
-                <label for="ingredients">Ingredients</label>
+                <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5"
+                    class="materialize-textarea"> {{ recipe.recipe_ingredients }} </textarea>
+                <label for="recipe_ingredients">Ingredients</label>
             </div>
         </div>
 
@@ -77,7 +77,7 @@
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">camera_alt</i>
                 <label id="urlLabel" class="strong-label"> Image URL</label>
-                <input id="imageUrl" name="imageUrl" type="text" value="{{ recipe.imageUrl }}"
+                <input id="image_Url" name="image_Url" type="text" value="{{ recipe.image_Url }}"
                     class="validate form-control" placeholder="https://brownie-chocolate-cake.com/etc">
             </div>
         </div>
@@ -86,8 +86,8 @@
         <div class="row">
             <div class="input-field col s12 peach">
                 <i class="material-icons prefix">date_range</i>
-                <input id="createdDate" name="createdDate" type="text" class="datepicker validate" required>
-                <label for="createdDate">Date Created</label>
+                <input id="created_Date" name="created_Date" type="text" class="datepicker validate" required>
+                <label for="created_Date">Date Created</label>
             </div>
         </div>
 
