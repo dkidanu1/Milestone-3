@@ -7,6 +7,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from functools import wraps
 if os.path.exists("env.py"):
     import env
 
@@ -20,14 +21,26 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not session["user"]:
+            return redirect(url_for('signin', next=request.url))
+        return f(*args, **kwargs)
+    return decorated_function
+
+
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
     recipes = list(mongo.db.recipes.find())
+    for a in session.keys():
+        print(a)
     return render_template("recipes.html", recipes=recipes)
 
 
 @app.route("/search", methods=["GET", "POST"])
+@login_required
 def search():
     search_list = []
     username = mongo.db.users.find_one(
@@ -45,6 +58,7 @@ def search():
 
 
 @app.route("/popular_recipes")
+@login_required
 def popular_recipes():
     recipes = list(mongo.db.tasks.find())
     return render_template("popular_recipes.html", recipes=recipes)
@@ -104,7 +118,9 @@ def signin():
 
     return render_template("signin.html")
 
+
 @app.route("/myrecipes/<username>", methods=["GET", "POST"])
+@login_required
 def myrecipes(username):
     # Pulling the session user's username from db
     username = mongo.db.users.find_one(
@@ -128,6 +144,7 @@ def signout():
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
+@login_required
 def add_recipe():
     if request.method == "POST":
         recipe = {
@@ -159,6 +176,7 @@ def add_recipe():
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+@login_required
 def edit_recipe(recipe_id):
     if request.method == "POST":
             submit = {
@@ -185,6 +203,17 @@ def delete_recipe(recipe_id):
     mongo.db.tasks.remove({"_id": ObjectId(recipe_id)})
     flash("Task successfully Deleted")
     return redirect(url_for('myrecipes', username=session["user"]))
+
+
+# Error 404 handler route
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+# Error 500 handler route
+@app.errorhandler(500)
+def server_error(e):
+    return render_template('500.html'), 500
 
 
 if __name__ == "__main__":

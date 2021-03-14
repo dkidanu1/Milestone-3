@@ -116,7 +116,19 @@
 }
 
 .signup{
-  margin-left: 150px;
+  justify-content: center;
+  display:flex;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+.signin{
+  justify-content: center;
+  display:flex;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
 
 /************ My Recipes ************/
@@ -149,7 +161,7 @@
 
 @media only screen and (max-width: 600px) {
   .container {
-    margin-left: 0;
+    width: 100%;
   }
  #recipe_li{
      margin:5px;
@@ -165,6 +177,8 @@
 .sub-text {
     text-align: center;
 }
+
+
 
 /************ Add Recipes ************/
 
@@ -206,16 +220,6 @@ input.valid:not([type]), input.valid:not([type]):focus, input.valid[type=text]:n
     padding-top: 150px;
 }
 
-.signup{
-    margin-left: 30px !important;
-    left: auto;
-    right: auto;   
-}
-.signin{
-    margin-left: 30px !important;
-    left: auto;
-    right: auto;   
-}
 .search_recipes {  
     font-size: 11px;
     padding-left: 1px;
@@ -241,17 +245,7 @@ input.valid:not([type]), input.valid:not([type]):focus, input.valid[type=text]:n
         padding-top: 150px;
 }
 
-.signup{
-    margin-left: 60px !important;
-    left: auto;
-    right: auto;   
-}
 
-.signin {
-    margin-left: 30px !important;
-    left: auto;
-    right: auto;
-}
 
 }
 

@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<!--404 image-->
+<section class="image-container container">
+    <div class="row no-margin">
+        <div class="col-12 no-pad">
+            <div class="card">
+                <img alt="oops" class="main-image"
+                     src="{{ url_for('static', filename='img/404.jpg')}}">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--404 text-->
+<section class="error-text">
+    <div class="row no-margin">
+        <div class="col-12 text-center no-pad">
+            <h1 class="error-header"><span>404</span> OOPS </h1>
+            
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
