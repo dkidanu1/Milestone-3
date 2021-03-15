@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?fam ly=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap");
 
 
+/************ General ************/
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -15,7 +16,6 @@
     margin: 5px;
 }
 
-
 /************ NavBar ************/
 .brand-logo {
   font-family: "Nunito Sans", sans-serif;
@@ -23,8 +23,8 @@
 }
 
 .navbar{
-  border: 0;
-  box-shadow: 0;
+  border: none;
+  box-shadow: none;
   background-color: #DFC7C1;
 }
 
@@ -42,22 +42,22 @@
 }
 
 .sidenav li>a {
-    color: white;
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    height: 48px;
-    line-height: 48px;
-    padding: 0 32px;
-    background-color:#DFC7C1;
-    font-family: "Nunito Sans", sans-serif;
-    font-weight: bold;
+  color: white;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 32px;
+  background-color:#DFC7C1;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: bold;
 }
 
 /************ Hero Image ************/
-  .homebtn {
-        padding-bottom: 15px;
-        padding-top: 15px;
+.homebtn {
+  padding-bottom: 15px;
+  padding-top: 15px;
 }
 
 .hero-image  {
@@ -70,7 +70,7 @@
   margin-left: 0;
   padding-left:0;
   right: 0;
-    bottom: 0;
+  bottom: 0;
 }
 
 .hero-text {
@@ -94,6 +94,8 @@
   height: 200%;
   width:200px;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .popularrecipe{
@@ -103,7 +105,7 @@
   max-height: 134px;
 }
 
-/************ Signin&Signup ************/
+/************ Signin & Signup ************/
 
 .sign{
   color: #DFC7C1;
@@ -120,54 +122,50 @@
   display:flex;
   margin-left: auto;
   margin-right: auto;
-  
 }
 
 .signin{
   justify-content: center;
   display:flex;
   margin-left: auto;
-  margin-right: auto;
-  
+  margin-right: auto;  
 }
 
 /************ My Recipes ************/
 .overlay{
   width: 100vw;
   position:absolute;
-    left: 0;
-    right: 0;
-    background-color: rgba(223,199,194,0.7);
-    font-size: 50px;
-    color: white;
-    font-family: "Nunito Sans", sans-serif;
-    margin-bottom: 1000px;
+  left: 0;
+  right: 0;
+  background-color: rgba(223,199,194,0.7);
+  font-size: 50px;
+  color: white;
+  font-family: "Nunito Sans", sans-serif;
+  margin-bottom: 1000px;
 }
+
 .preview{
   text-shadow: none;
-
 }
 
 .collapsible-header .col strong {
-    margin: 5px;
-    line-height:42px;
-    
+  margin: 5px;
+  line-height:42px;
 }
 
 .container {
-    max-width: 1280px;
-    width: 90%;
+  max-width: 1280px;
+  width: 90%;
 }
 
 @media only screen and (max-width: 600px) {
   .container {
     width: 100%;
-  }
- #recipe_li{
+ }
+  #recipe_li{
      margin:5px;
  }
 }
-
 
 /************ Popular Recipes ************/
 .popular {
@@ -178,74 +176,68 @@
     text-align: center;
 }
 
-
-
 /************ Add Recipes ************/
 
-input.valid:not([type]), input.valid:not([type]):focus, input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, input.valid[type=password]:not(.browser-default), input.valid[type=password]:not(.browser-default):focus, input.valid[type=email]:not(.browser-default), input.valid[type=email]:not(.browser-default):focus, input.valid[type=url]:not(.browser-default), input.valid[type=url]:not(.browser-default):focus, input.valid[type=time]:not(.browser-default), input.valid[type=time]:not(.browser-default):focus, input.valid[type=date]:not(.browser-default), input.valid[type=date]:not(.browser-default):focus, input.valid[type=datetime]:not(.browser-default), input.valid[type=datetime]:not(.browser-default):focus, input.valid[type=datetime-local]:not(.browser-default), input.valid[type=datetime-local]:not(.browser-default):focus, input.valid[type=tel]:not(.browser-default), input.valid[type=tel]:not(.browser-default):focus, input.valid[type=number]:not(.browser-default), input.valid[type=number]:not(.browser-default):focus, input.valid[type=search]:not(.browser-default), input.valid[type=search]:not(.browser-default):focus, textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus, .select-wrapper.valid>input.select-dropdown {
-    border-bottom: 1px solid#84b4c8;
-    -webkit-box-shadow: 0 1px 0 0#84b4c8;
-    box-shadow: 0 1px 0 0#84b4c8;
+  input.valid:not([type]), input.valid:not([type]):focus, input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, input.valid[type=password]:not(.browser-default), input.valid[type=password]:not(.browser-default):focus, input.valid[type=email]:not(.browser-default), input.valid[type=email]:not(.browser-default):focus, input.valid[type=url]:not(.browser-default), input.valid[type=url]:not(.browser-default):focus, input.valid[type=time]:not(.browser-default), input.valid[type=time]:not(.browser-default):focus, input.valid[type=date]:not(.browser-default), input.valid[type=date]:not(.browser-default):focus, input.valid[type=datetime]:not(.browser-default), input.valid[type=datetime]:not(.browser-default):focus, input.valid[type=datetime-local]:not(.browser-default), input.valid[type=datetime-local]:not(.browser-default):focus, input.valid[type=tel]:not(.browser-default), input.valid[type=tel]:not(.browser-default):focus, input.valid[type=number]:not(.browser-default), input.valid[type=number]:not(.browser-default):focus, input.valid[type=search]:not(.browser-default), input.valid[type=search]:not(.browser-default):focus, textarea.materialize-textarea.valid, textarea.materialize-textarea.valid:focus, .select-wrapper.valid>input.select-dropdown {
+  border-bottom: 1px solid#84b4c8;
+  color:#84b4c8;
+  box-shadow: 0 1px 0 0#84b4c8;
 }
 
 .input-field .prefix.active {
-    color:#84b4c8;    
+  color:#84b4c8;    
 }
 
 .dropdown-content li>a, .dropdown-content li>span {
-    font-size: 16px;
-    color: #84b4c8;
-    display: block;
-    line-height: 22px;
-    padding: 14px 16px;
+  font-size: 16px;
+  color: #84b4c8;
+  display: block;
+  line-height: 22px;
+  padding: 14px 16px;
 }
-
 
 /************ Media Queries ************/
 
 @media (max-width: 568px) {
 .homebtn {
-    padding-bottom: 15px;
-    padding-top: 15px;
+  padding-bottom: 15px;
+  padding-top: 15px;
 }
  nav .brand-logo {
-    position: absolute;
-    color: #fff;
-    display: inline-block;
-    font-size: 15px;
-    padding: 0;
+  position: absolute;
+  color: #fff;
+  display: inline-block;
+  font-size: 15px;
+  padding: 0;
 }
 
 .cb{
-    padding-top: 150px;
+  padding-top: 150px;
 }
 
 .search_recipes {  
-    font-size: 11px;
-    padding-left: 1px;
-    padding-right: 1px;  
+  font-size: 11px;
+  padding-left: 1px;
+  padding-right: 1px;  
 }
 .reset_recipes {
-    font-size: 11px; 
-    padding-left: 1px;
-    padding-right: 1px; 
+  font-size: 11px; 
+  padding-left: 1px;
+  padding-right: 1px; 
   }
 }
 
 @media (max-width: 768px) {
     .homebtn {
-        padding-bottom: 15px;
-        padding-top: 15px;
+      padding-bottom: 15px;
+       padding-top: 15px;
 }
     .navtext{
-        font-size: 15px;
+       font-size: 15px;
 }
 
 .cb{
-        padding-top: 150px;
-}
-
-
-
+      padding-top: 150px;
+ }
 }
 

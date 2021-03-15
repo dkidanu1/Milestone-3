@@ -3,7 +3,7 @@ import datetime
 import time
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for,)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -24,7 +24,7 @@ mongo = PyMongo(app)
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if not session["user"]:
+        if "user" not in session:
             return redirect(url_for('signin', next=request.url))
         return f(*args, **kwargs)
     return decorated_function
@@ -53,7 +53,7 @@ def search():
         except:
             if session["user"]: 
                 search_list.append(item)
-                
+
     return render_template("myrecipes.html", recipes =search_list)
 
 
@@ -93,12 +93,10 @@ def signup():
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
-        # check if username exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            # ensure hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
@@ -107,12 +105,10 @@ def signin():
                     return redirect(url_for(
                         "myrecipes", username=session["user"])) 
             else:
-                # invalid password match
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("signin"))
 
         else:
-            # username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("signin"))
 
@@ -122,7 +118,6 @@ def signin():
 @app.route("/myrecipes/<username>", methods=["GET", "POST"])
 @login_required
 def myrecipes(username):
-    # Pulling the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
@@ -137,7 +132,6 @@ def myrecipes(username):
 
 @app.route("/signout")
 def signout():
-    # remove user from session cookies
     flash("You have been signed out")
     session.pop("user")
     return redirect(url_for("signin"))
@@ -203,17 +197,6 @@ def delete_recipe(recipe_id):
     mongo.db.tasks.remove({"_id": ObjectId(recipe_id)})
     flash("Task successfully Deleted")
     return redirect(url_for('myrecipes', username=session["user"]))
-
-
-# Error 404 handler route
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
-
-# Error 500 handler route
-@app.errorhandler(500)
-def server_error(e):
-    return render_template('500.html'), 500
 
 
 if __name__ == "__main__":
