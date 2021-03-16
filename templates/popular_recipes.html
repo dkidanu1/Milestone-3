@@ -28,7 +28,8 @@
                         <span
                             class="card-title activator text-darken-4 peach"><strong>{{ recipe.recipe_name }}</strong><i
                                 class="material-icons right">more_vert</i></span>
-                        <p><a href="{{ url_for('add_recipe',recipe= recipe._id) }}" class="grey-text">Save Recipe</a></p>
+                        <p><a href="{{ url_for('add_recipe',recipe= recipe._id) }}" class="grey-text">Save Recipe</a>
+                        </p>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title text-darken-4 peach"><strong>{{ recipe.recipe_name }}</strong><i
@@ -37,11 +38,11 @@
                     </div>
                 </div>
             </div>
-                {% endif %}
+            {% endif %}
             {% endfor %}
-            </div>
         </div>
-   
+    </div>
+
 </section>
 
 {% endblock %}

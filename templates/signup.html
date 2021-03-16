@@ -1,47 +1,47 @@
-{% extends "base.html" %} 
-{% block content %} 
+{% extends "base.html" %}
+{% block content %}
 
 <h3 class="center-align sign">Sign up</h3>
 <p class="sign peach">Sign up and join a community of like minded creative cooks who will share recipes!</p>
 
-    <div class="row">
-        <form class="col s12 m8 offset-m2" method="post" action="{{ url_for('signup') }}">
-            <div class="card-panel">
-                <!-- username -->
-                <div class="row">
-                    <div class="input-field col s12 peach">
-                        <i class="material-icons prefix ">perm_identity</i>
-                        <input id="username" name="username" type="text" minlength="5"
-                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="username">Username</label>
-                    </div>
-                </div>
-                <!-- Password -->
-                <div class="row">
-                    <div class="input-field col s12 peach">
-                        <i class="material-icons prefix ">lock</i>
-                        <input id="password" name="password" type="password" minlength="5"
-                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-                <!-- register -->
-                <div class="row">
-                    <button type="submit" class=" btn-large grey lighten-5 peach center-align signup">
-                     <i class="material-icons prefix"></i> Sign Up
-                    </button>
+<div class="row">
+    <form class="col s12 m8 offset-m2" method="post" action="{{ url_for('signup') }}">
+        <div class="card-panel">
+            <!-- username -->
+            <div class="row">
+                <div class="input-field col s12 peach">
+                    <i class="material-icons prefix ">perm_identity</i>
+                    <input id="username" name="username" type="text" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="username">Username</label>
                 </div>
             </div>
-        </form>
-    </div>
-
-    <div class="row">
-        <div class="col s12">
-            <p class="center-align peach">
-                Already Registered?
-                <a href="{{ url_for('signin') }}" class="light-blue-text text-darken-4"> Sign in</a>
-            </p>
+            <!-- Password -->
+            <div class="row">
+                <div class="input-field col s12 peach">
+                    <i class="material-icons prefix ">lock</i>
+                    <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <!-- register -->
+            <div class="row">
+                <button type="submit" class=" btn-large grey lighten-5 peach center-align signup">
+                    <i class="material-icons prefix"></i> Sign Up
+                </button>
+            </div>
         </div>
-    </div>
+    </form>
+</div>
 
-{% endblock %} 
+<div class="row">
+    <div class="col s12">
+        <p class="center-align peach">
+            Already Registered?
+            <a href="{{ url_for('signin') }}" class="light-blue-text text-darken-4"> Sign in</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}

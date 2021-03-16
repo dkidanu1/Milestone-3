@@ -11,11 +11,11 @@
                 <select id="category_name" name="category_name" class="validate" required>
                     <option value="" disabled selected>Choose Category</option>
                     {% for category in category %}
-                       {% if category.category_name == recipe.category_name %} 
+                    {% if category.category_name == recipe.category_name %}
                     <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
-                       {% else %}
+                    {% else %}
                     <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                        {% endif %}
+                    {% endif %}
                     {% endfor %}
                 </select>
                 <label for="category_name">Recipe Category</label>

@@ -8,17 +8,17 @@ The live website can be found [The Cook Book](https://recipes-list1-2-2.herokuap
 
 ---
 ## Contents
-1. [About the Site](#about)
-2. [Strategy Plane](#strategy)
-3. [Scope Plane](#Scope-Plane)
-4. [Structure Plane](#Structure-Plane)
-5. [Skeleton Plane](#Skeleton-Plane)
-6. [Surface Plane](#Surface-Plane)
-7. [Design](#Design)
-8. [Technologies Used](#Technologies-Used)
-9. [Testing](#Testing)
-10. [Deployment](#Deployment)
-11. [Disclaimer](#Disclaimer)
+1. About the Site
+2. Strategy Plane
+3. Scope Plane
+4. Structure Plane
+5. Skeleton Plane
+6. Surface Plane
+7. Design
+8. Technologies Used
+9. Testing
+10. Deployment
+11. Disclaimer
 
 
 ## About the Site: 
@@ -79,11 +79,11 @@ Registered: This is for users who have an account and come to the website, after
 
 The website is going to have 1 page accessible to users who have not registered and 5 pages available to signed in users each with a distinctive aim and purpose:
 
-- Home: Provides a simple landing page for users to take the next step.
-- Popular Recipes: Provide inspiration for recipes a user can copy and replicate.  
-- My Recipes: Stores user’s recipes and provides a search functionality allowing the user to find the recipes they are looking for easily.
-- Add Recipe: Allows the user to create their own recipe that will be saved onto their “My Recipes” Page.
-- Sign in/ Sign Out: Allows the user to sign in with a redirect to the “My Recipes” page and allows the user to sign out of their account and redirects to the home page. 
+- **Home:** Provides a simple landing page for users to take the next step.
+- **Popular Recipes:** Provide inspiration for recipes a user can copy and replicate.  
+- **My Recipes:** Stores user’s recipes and provides a search functionality allowing the user to find the recipes they are looking for easily.
+- **Add Recipe:** Allows the user to create their own recipe that will be saved onto their “My Recipes” Page.
+- **Sign in/ Sign Out:** Allows the user to sign in with a redirect to the “My Recipes” page and allows the user to sign out of their account and redirects to the home page. 
 
 The 5 pages consist of different sections. A navigation bar which will be adapted accordingly for the mobile version, will be static on the top of the website. This will allow the user to move to any other section easily without scrolling or searching for the navigation. Links throughout the website will be responsive to the hover, on the navigation bar it will be highlighted with an overlay.
 
@@ -128,7 +128,6 @@ The site has multiple features and in order to test effectively I broke down the
 - Responsiveness 
 - W3 HTML Validator
 - W3 CSS Validator
-- JS hint
 - PEP8
 
 #### 1. Interaction 
@@ -245,11 +244,10 @@ At this point the sizing of the hero image was an issue. For this section width 
 **W3 CSS Validator**
 - CSS Style Sheet - Minor issues with symbols (fixed)
 
-**JShint**
-- INSERT FINDINGS header
+**PEP8**
+- INSERT FINDINGS 
 
-**Pep8**
-- INSERT FINDINGS header
+
 
 **Design**
 

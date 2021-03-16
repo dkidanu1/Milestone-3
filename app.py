@@ -48,10 +48,10 @@ def search():
     query = request.form.get("query")
     recipes2 = list(mongo.db.tasks.find({"$text": {"$search": query}}))
     for item in recipes2:
-        try: 
+        try:
             item['popular']
         except:
-            if session["user"]: 
+            if session["user"]:
                 search_list.append(item)
 
     return render_template("myrecipes.html", recipes =search_list)
