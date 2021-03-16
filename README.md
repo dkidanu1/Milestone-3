@@ -4,12 +4,12 @@
 ![Responsiveness](static/img/responsive.png)
 
 
-The live website can be found [The Cook Book](https://dkidanu1.github.io/Milestone-3/).
+The live website can be found [The Cook Book](https://recipes-list1-2-2.herokuapp.com/).
 
 ---
 ## Contents
-1. [About](#About)
-2. [Strategy Plane](#Strategy-Plane)
+1. [About the Site](#about)
+2. [Strategy Plane](#strategy)
 3. [Scope Plane](#Scope-Plane)
 4. [Structure Plane](#Structure-Plane)
 5. [Skeleton Plane](#Skeleton-Plane)
@@ -20,8 +20,10 @@ The live website can be found [The Cook Book](https://dkidanu1.github.io/Milesto
 10. [Deployment](#Deployment)
 11. [Disclaimer](#Disclaimer)
 
+
 ## About the Site: 
 The Cook Book site was designed to give users a simple and easy way to view, save and create recipes. The user will have limited access to the site without signing up, but will have full view of the popular recipes. The idea of the site was to make all the content relevant to recipes and cooking for users who are interested in the theme.
+
 
 ## Strategy Plane
 The site was created to showcase knowledge gained in HTML, CSS, JavaScript, Python and mongoDB and to provide an exciting user experience for those interested in cooking. The Website is easy to interact with and provides a seamless experience for the user. Key design decisions were made allowing the users to access the entire page, and all CRUD functionality (Create, Read, Update and Delete) within a few clicks as possible. The site was inspired by the Australian application [Sunee](https://www.sunee.com/).
@@ -203,7 +205,7 @@ This section will attempt to preform different URL injections to see if a malici
 
 **Fixes for URL injection**
 
-The above security features were mitigated by adding a werkzeug feature Login Required Decorator from flask. This prohibits users without a username to view the pages. This has ensured the website is secure and safe. The redirect was set up and will now direct the user to the sign in/sign up page where they are prompted to sign in or sign up to utilize the site.  
+The above security features were mitigated by adding a werkzeug feature Login Required Decorator from flask (https://flask.palletsprojects.com/en/1.1.x/patterns/viewdecorators/#login-required-decorator). This prohibits users without a username to view the pages. This has ensured the website is secure and safe. The redirect was set up and will now direct the user to the sign in/sign up page where they are prompted to sign in or sign up to utilize the site.  
 
 #### 3. Responsiveness 
 In this test the website was tested to all default device sizes provided by chrome dev tools.
