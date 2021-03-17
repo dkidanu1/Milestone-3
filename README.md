@@ -112,14 +112,14 @@ During the of development, I noticed a few features that the site would benefit 
 - Add Reset password for users in the user profile.
 - Admin profile allowing for overview insights of users and recipes added to site.
 
-##Skeleton Plane
+## Skeleton Plane
 
 The Cook book website will have a consistent pastel pink and grey theme, this will include consistent typography, sizing, colour and look/feel. 
 
 ![Wireframe](static/img/wireframe.jpg)
 ![Wireframe1](static/img/wireframe2.jpg)
 
-##Surface Plane
+## Surface Plane
 
 ### Testing 
 The site has multiple features and in order to test effectively I broke down the testing phases into multiple sections seen below:
@@ -301,7 +301,7 @@ I chose to use Nunito Sans for majority of the text support by sans-serif due to
 **Database**
 - MongoBD- For storing content for the database of recipes and users
 
-###Deplotment 
+### Deployment 
 The steps below will explain how you can get the website running on heroku and locally.
 
 **Tools required to be installed**

@@ -35,10 +35,9 @@ def login_required(f):
 def get_recipes():
     recipes = list(mongo.db.recipes.find())
     for a in session.keys():
-        print(a)
-    return render_template("recipes.html", recipes=recipes)
+        return render_template("recipes.html", recipes=recipes)
 
-
+# Seach function
 @app.route("/search", methods=["GET", "POST"])
 @login_required
 def search():
@@ -56,14 +55,14 @@ def search():
 
     return render_template("myrecipes.html", recipes=search_list)
 
-
+# Popular recipes renering function
 @app.route("/popular_recipes")
 @login_required
 def popular_recipes():
     recipes = list(mongo.db.tasks.find())
     return render_template("popular_recipes.html", recipes=recipes)
 
-
+# Sign up function
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -88,7 +87,7 @@ def signup():
 
     return render_template("signup.html")
 
-
+# Sign in function
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
@@ -99,8 +98,8 @@ def signin():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format
-                        (request.form.get("username")))
+                    flash("Welcome, {}".format(
+                        request.form.get("username")))
                     return redirect(url_for(
                         "myrecipes", username=session["user"]))
             else:
@@ -113,7 +112,7 @@ def signin():
 
     return render_template("signin.html")
 
-
+# Display user recipes function
 @app.route("/myrecipes/<username>", methods=["GET", "POST"])
 @login_required
 def myrecipes(username):
@@ -128,14 +127,14 @@ def myrecipes(username):
 
     return redirect(url_for("signin"))
 
-
+# Signout function
 @app.route("/signout")
 def signout():
     flash("You have been signed out")
     session.pop("user")
     return redirect(url_for("signin"))
 
-
+# Add & Save Recipe function
 @app.route("/add_recipe", methods=["GET", "POST"])
 @login_required
 def add_recipe():
@@ -149,7 +148,7 @@ def add_recipe():
             "recipe_steps": request.form.get("recipe_steps"),
             "created_Date": request.form.get("created_Date"),
             "last_Updated": request.form.get("last_Updated"),
-            "imageUrl": request.form.get("imageUrl"),
+            "image_Url": request.form.get("image_Url"),
             "created_by": session["user"]
         }
         mongo.db.tasks.insert_one(recipe)
@@ -157,16 +156,15 @@ def add_recipe():
         return redirect(url_for('myrecipes', username=session["user"]))
     categories = mongo.db.categories.find().sort("category_name", 1)
     recipeId = request.args.get("recipe")
-    print(recipeId, "Random letters")
     if recipeId != "":
         recipe = mongo.db.tasks.find_one({"_id": ObjectId(recipeId)})
-        print(recipe, "Random letters")
         return render_template("add_recipe.html",
             recipe=recipe, category=categories)
 
     return render_template("add_recipe.html", category=categories)
 
 
+# Edit & Save Recipe function
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 @login_required
 def edit_recipe(recipe_id):
@@ -188,15 +186,25 @@ def edit_recipe(recipe_id):
     recipe = mongo.db.tasks.find_one({"_id": ObjectId(recipe_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_recipe.html",
-    recipe=recipe, categories=categories)
+        recipe=recipe, categories=categories)
 
 
+# Delete Recipe function
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.tasks.remove({"_id": ObjectId(recipe_id)})
     flash("Task successfully Deleted")
     return redirect(url_for('myrecipes', username=session["user"]))
 
+# 404 error handling
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+# 500 error handling
+@app.errorhandler(500)
+def server_error(e):
+    return render_template('500.html'), 500
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

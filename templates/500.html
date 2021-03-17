@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row error">
+  <h1 class="peach page">500 Page Not Found</h1>
+  <img class="oops" alt="oops" src="{{ url_for('static', filename='img/oops.png') }}">
+  <p class="peach">What you were looking for is just not there.</p>
+  <p class="link"><a href="{{ url_for('get_recipes') }}">Click <strong>HERE</strong> to go somewhere nice!</a></p>
+</div>
+{% endblock %}
