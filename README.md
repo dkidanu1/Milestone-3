@@ -240,7 +240,10 @@ At this point, spacing and sizing of the buttons was an issue. This was an issue
 At this point the sizing of the hero image was an issue. For this section width and css styling controls were utilized to adjust the image. 
 
 **W3 HTML Validator**
-- INSERT FINDINGS header
+- Erros in element positioning and syntax (Fixed)
+- Error for Child element (Not Fixed)
+- Missing Alt tag (Fixed)
+- Warnings were noted and mostly addressed, project remains with 2
 
 **W3 CSS Validator**
 - CSS Style Sheet - Minor issues with symbols (fixed)
