@@ -122,6 +122,26 @@ The Cook book website will have a consistent pastel pink and grey theme, this wi
 ## Surface Plane
 
 ### Testing 
+**Validating User Stories:**
+
+- As a user I want to find recipes for inspiration
+>User is able to: Easily navigate to where recipes can be found through the navigation bar. Once the user has navigated to the popular recipes section they are able to view all the pre populated recipes.
+
+- As a user I want to save my favourite recipes
+> User is able to: Locate a recipe they like on the popular recipes page and save that onto their own account. Before saving the recipe the user has the chance to update it according to their preference. 
+
+- As a user I want to add and store my own recipes
+> User is able to: Add a recipe once logged into their account. A new page reveals itself once a user logs in called Add Recipe, from this page a user can inout all the details of their recipe and save it for a later date.
+
+- As a user I want to be able to update and edit the recipes I created
+> User is able to: Locate recipes added on the My Recipes page and edit or update the information according to the new inputs they would like to include. 
+
+- As a user I want to delete any recipe I don’t find relevant anymore
+>  User is able to: Delete a recipe I do not want to be stored on my account anymore. This fuctionality is found on the My Recipes Page. 
+
+- As a user I want to be able to search for recipes by cuisine and key words
+> User is able to: Find recipes using key words, this includes titles and categories. Once user searches a key word they will get a short list of search results.
+
 The site has multiple features and in order to test effectively I broke down the testing phases into multiple sections seen below:
 - Interaction 
 - Security (URL Injection)
