@@ -128,6 +128,7 @@ The site has multiple features and in order to test effectively I broke down the
 - Responsiveness 
 - W3 HTML Validator
 - W3 CSS Validator
+- JSHint
 - PEP8
 
 #### 1. Interaction 
@@ -244,10 +245,19 @@ At this point the sizing of the hero image was an issue. For this section width 
 **W3 CSS Validator**
 - CSS Style Sheet - Minor issues with symbols (fixed)
 
+**JSHint**
+The js test came back clear but included two version warnings that will be monitored:
+
+Two warnings
+- 19	'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+- 20	'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+
 **PEP8**
-- INSERT FINDINGS 
-
-
+- Additional white space (Fixed)
+- Error in indentation (Fixed)
+- Had many lines above above 79 character in length (Fixed)
+- Continuation line under-indented for visual indent (Not All Fixed)
+  
 
 **Design**
 

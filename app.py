@@ -54,7 +54,7 @@ def search():
             if session["user"]:
                 search_list.append(item)
 
-    return render_template("myrecipes.html", recipes =search_list)
+    return render_template("myrecipes.html", recipes=search_list)
 
 
 @app.route("/popular_recipes")
@@ -62,7 +62,6 @@ def search():
 def popular_recipes():
     recipes = list(mongo.db.tasks.find())
     return render_template("popular_recipes.html", recipes=recipes)
-    
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -84,8 +83,8 @@ def signup():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")     
-        return redirect(url_for("myrecipes", username=session["user"]))  
+        flash("Registration Successful!")
+        return redirect(url_for("myrecipes", username=session["user"]))
 
     return render_template("signup.html")
 
@@ -103,7 +102,7 @@ def signin():
                     flash("Welcome, {}".format
                         (request.form.get("username")))
                     return redirect(url_for(
-                        "myrecipes", username=session["user"])) 
+                        "myrecipes", username=session["user"]))
             else:
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("signin"))
@@ -123,9 +122,9 @@ def myrecipes(username):
 
     recipes = list(mongo.db.tasks.find({'created_by': username}))
 
-
-    if session["user"]: 
-        return render_template("myrecipes.html", username=username, recipes=recipes)
+    if session["user"]:
+        return render_template(
+            "myrecipes.html", username=username, recipes=recipes)
 
     return redirect(url_for("signin"))
 
@@ -162,10 +161,9 @@ def add_recipe():
     if recipeId != "":
         recipe = mongo.db.tasks.find_one({"_id": ObjectId(recipeId)})
         print(recipe, "Random letters")
-        return render_template("add_recipe.html", 
+        return render_template("add_recipe.html",
             recipe=recipe, category=categories)
 
-    
     return render_template("add_recipe.html", category=categories)
 
 
@@ -185,11 +183,12 @@ def edit_recipe(recipe_id):
                 "image_Url": request.form.get("image_Url"),
                 "created_by": session["user"]
             }
-            mongo.db.tasks.update({"_id":ObjectId(recipe_id)}, submit)
+            mongo.db.tasks.update({"_id": ObjectId(recipe_id)}, submit)
             flash("Recipe Successfully Updated")
     recipe = mongo.db.tasks.find_one({"_id": ObjectId(recipe_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_recipe.html", recipe=recipe, categories=categories)
+    return render_template("edit_recipe.html",
+    recipe=recipe, categories=categories)
 
 
 @app.route("/delete_recipe/<recipe_id>")
