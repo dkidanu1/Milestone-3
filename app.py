@@ -114,7 +114,7 @@ def signin():
 
 # Display user recipes function
 @app.route("/myrecipes/<username>", methods=["GET", "POST"])
-@login_required
+
 def myrecipes(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
