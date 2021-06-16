@@ -57,7 +57,7 @@ def search():
 
 # Popular recipes renering function
 @app.route("/popular_recipes")
-
+@login_required
 def popular_recipes():
     recipes = list(mongo.db.tasks.find())
     return render_template("popular_recipes.html", recipes=recipes)
@@ -202,9 +202,9 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 # 500 error handling
-@app.errorhandler(500)
-def server_error(e):
-    return render_template('500.html'), 500
+#@app.errorhandler(500)
+#def server_error(e):
+ #   return render_template('500.html'), 500
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
