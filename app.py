@@ -57,7 +57,7 @@ def search():
 
 # Popular recipes renering function
 @app.route("/popular_recipes")
-@login_required
+
 def popular_recipes():
     recipes = list(mongo.db.tasks.find())
     return render_template("popular_recipes.html", recipes=recipes)
